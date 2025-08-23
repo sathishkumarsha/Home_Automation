@@ -8,9 +8,13 @@ void setup() {
 
 void loop() {
   // Call the function to read soil moisture:
-    int moistureLevel = moisture_api();
+  int moistureLevel = moisture_api();
   // Call the function to control the pump based on moisture level:
     PumpControl_api(moistureLevel);
+  // Read Humidity level
+  int humidityLevel = humidity_read_api();
+  // Call the function to control the humidifier based on humidity level:
+    HumidifierControl_api(humidityLevel);
   // Wait for a 10minutes:
   delay(600000);
 }

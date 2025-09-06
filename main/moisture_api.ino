@@ -14,7 +14,7 @@ int moisture_api() {
   int sensorValue = analogRead(SOIL_MOISTURE_PIN);  // Read the analog value from the sensor
 
   // Map the sensor value to a percentage (0% = dry, 100% = wet)
-  int moisturePercentage = map(sensorValue, 0, 1023, 0, 100);
+  int moisturePercentage = map(sensorValue, 0, 1023, 100, 0);
 
   // Print the sensor value and percentage to the Serial Monitor
   Serial.print("Soil Moisture Level: ");

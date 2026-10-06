@@ -14,12 +14,12 @@
  * @param moistureLevel The current soil moisture level (integer value).
  */
 void PumpControl_api(int moistureLevel) {
-  if (moistureLevel < 20) {
-    Serial.print("PumpON");
+  if (moistureLevel < 40) {
+    Serial.print("PumpON\n");
     // Activate the pump
     digitalWrite(PUMP_PIN, LOW);
-  } else if (moistureLevel > 50) {
-    Serial.print("PumpOFF");
+  } else if (moistureLevel > 80) {
+    Serial.print("PumpOFF\n");
     // Deactivate the pump
     digitalWrite(PUMP_PIN, HIGH);
   }

@@ -6,7 +6,6 @@ void setup() {
   Serial.begin(9600);
   analogReadResolution(12);
   analogSetPinAttenuation(SOIL_MOISTURE_PIN, ADC_11db);
-
 }
 
 void loop() {
@@ -16,11 +15,6 @@ void loop() {
 
   moistureLevel = moisture_api();
   // Call the function to control the pump based on moisture level:
-    PumpControl_api(moistureLevel);
-  // Read Humidity level
-  //humidityLevel = humidity_read_api();
-  // Call the function to control the humidifier based on humidity level:
-  //  HumidifierControl_api(humidityLevel);
-  // Wait for a 10minutes:
+  PumpControl_api(moistureLevel);
   delay(600);
 }

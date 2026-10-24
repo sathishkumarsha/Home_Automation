@@ -1,14 +1,13 @@
 // Define the pin for the soil moisture sensor
-const uint8_t SOIL_MOISTURE_PIN = 34;  // Analog pin A0 is used for the sensor
+const uint8_t SOIL_MOISTURE_PIN = 34;  // ESP32 GPIO34 (ADC1_CH6, input-only)
 
 /**
- * @brief Reads the soil moisture sensor value, maps it to a percentage, and prints the result to the Serial Monitor.
+ * @brief Samples the soil moisture sensor and returns a value derived from the averaged ADC reading.
  *
  * This function performs the following steps:
- * - Reads the analog value from the soil moisture sensor connected to SOIL_MOISTURE_PIN.
- * - Maps the raw sensor value (0-1023) to a percentage (0% = dry, 100% = wet).
- * - Prints the moisture percentage to the Serial Monitor for monitoring purposes.
- * - Adds a 1-second delay for readability between measurements.
+ * - Takes 10 analog readings from SOIL_MOISTURE_PIN, waiting 5 ms between readings.
+ * - Averages the readings, multiplies the average by 100, and divides by 4095.
+ * - Returns the result as an 8-bit integer; it does not print or apply a dry/wet calibration.
  */
 int moisture_api() {
   const int sampleCount = 10;

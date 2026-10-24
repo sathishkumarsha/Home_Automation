@@ -1,17 +1,17 @@
-// Activate the pump control pin DIO pin 7, if moisture level is less than 20%
-// Deactivate the pump control pin , if moisture level is more than 70%
-// Generate the pump control in a function PumpControl_api()
+// Activate pump control pin 2 when moisture is below 40%.
+// Deactivate pump control pin 2 when moisture is above 80%.
+// PumpControl_api() controls the active-low pump output.
 #define PUMP_PIN 2
 
 /**
- * @brief Controls the water pump based on the soil moisture level.
+ * @brief Controls the pump using the soil-moisture reading.
  *
- * This function activates or deactivates the pump depending on the provided
- * moisture level. If the moisture level is below 20, the pump is turned ON.
- * If the moisture level is above 50, the pump is turned OFF.
- * The function also prints the pump status ("PumpON" or "PumpOFF") to the Serial monitor.
+ * Turns the pump on when moisture is below 40% and off when it is above 80%.
+ * Readings from 40% through 80% leave the pump output unchanged. The output
+ * is active-low: LOW turns the pump on and HIGH turns it off. Prints a status
+ * message when either threshold condition is met.
  *
- * @param moistureLevel The current soil moisture level (integer value).
+ * @param moistureLevel Soil-moisture level as an integer percentage.
  */
 void PumpControl_api(int moistureLevel) {
   if (moistureLevel < 40) {

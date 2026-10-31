@@ -1,9 +1,9 @@
 // Activate pump control pin 2 when moisture is below 40%.
 // Deactivate pump control pin 2 when moisture is above 80%.
 // PumpControl_api() controls the active-low pump output.
-#define PUMP_PIN 2
+#define PUMP_PIN 4
 
-/**
+/** 
  * @brief Controls the pump using the soil-moisture reading.
  *
  * Turns the pump on when moisture is below 40% and off when it is above 80%.
@@ -23,4 +23,5 @@ void PumpControl_api(int moistureLevel) {
     // Deactivate the pump
     digitalWrite(PUMP_PIN, HIGH);
   }
+  Serial.println(moistureLevel);
 }

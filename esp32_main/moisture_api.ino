@@ -1,5 +1,5 @@
 // Define the pin for the soil moisture sensor
-const uint8_t SOIL_MOISTURE_PIN = 34;  // ESP32 GPIO34 (ADC1_CH6, input-only)
+//const uint8_t SOIL_MOISTURE_PIN = 34;  // ESP32 GPIO34 (ADC1_CH6, input-only)
 
 /**
  * @brief Samples the soil moisture sensor and returns a value derived from the averaged ADC reading.
@@ -20,9 +20,9 @@ int moisture_api() {
     delay(5);
   }
   // Raw ADC reading, typically 0-4095 
-  rawMoisture = (uint32_t)((total / sampleCount)*100)
+  rawMoisture = (uint32_t)((total / sampleCount)*100);
   moisturePercent = (uint8_t)(rawMoisture/4095);
 
-  return moisturePercent;
+  return (100-moisturePercent);
 
 }
